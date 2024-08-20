@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { promptsText } from './prompts';
+import { isValidURL } from './utils/ivValidUrl';
 
 export const app = express();
 
@@ -22,7 +23,17 @@ prompts.get('/hello', (req, res) => {
 });
 
 prompts.get('/cohere-journalist', (req, res) => {
-  res.status(200).send({ message: promptsText.cohereJournalist });
+  const { url } = req.body;
+
+  if (!url || !isValidURL(url)) {
+    return res.status(400).json({
+      error: 'Bad Input: paramName is either missing or not a valid URL.'
+    });
+  }
+
+  return res
+    .status(200)
+    .json({ message: `${promptsText.cohereJournalist} ${url}` });
 });
 
 // Version the api
