@@ -31,9 +31,21 @@ prompts.get('/cohere-journalist', (req, res) => {
     });
   }
 
+  return res.status(200).json({ message: `${promptsText.journalist} ${url}` });
+});
+
+prompts.get('/cold-email', (req, res) => {
+  const { research } = req.body;
+
+  if (!research) {
+    return res.status(400).json({
+      error: 'Bad Input: paramName is either missing or not a valid URL.'
+    });
+  }
+
   return res
     .status(200)
-    .json({ message: `${promptsText.cohereJournalist} ${url}` });
+    .json({ message: `${promptsText.coldEmailCopy}${research}` });
 });
 
 // Version the api
