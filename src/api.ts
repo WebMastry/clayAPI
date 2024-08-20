@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { promptsText } from './prompts';
 import { isValidDomain } from './utils/isValidDomain';
+import { replacePlaceholders } from './utils/replaceLiteral';
 
 export const app = express();
 
@@ -35,17 +36,23 @@ prompts.get('/cohere-journalist', (req, res) => {
 });
 
 prompts.get('/cold-email', (req, res) => {
-  const { research } = req.body;
+  const { companyName, research, offer } = req.body;
 
-  if (!research) {
+  if (!companyName || !research || !offer) {
     return res.status(400).json({
-      error: 'Bad Input: paramName is either missing or not a valid Research.'
+      error: 'Bad Input: Make sure to send companyName, research and offer'
     });
   }
 
   return res
     .status(200)
-    .json({ message: `${promptsText.coldEmailCopy}${research}` });
+    .json({
+      message: replacePlaceholders(promptsText.coldEmailCopy, [
+        companyName,
+        research,
+        offer
+      ])
+    });
 });
 
 // Version the api

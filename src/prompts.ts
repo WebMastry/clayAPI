@@ -17,23 +17,25 @@ const promptsText = {
   
   here is the company website:`,
 
-  coldEmailCopy: `You are crafting the body of a cold email aimed at a decision maker in a medium size company. Your goal is to propose a collaborative opportunity without sounding salesy. The business is identified by Year Up 
+  //
 
-  You've conducted detailed research available at the end of this message.
+  coldEmailCopy: `You are crafting the body of a cold email aimed at a decision maker in a medium size company. Your goal is to propose a collaborative opportunity without sounding salesy. The business is identified by {0} 
+
+  You've conducted detailed research available here: 
+  {1}
 
   Tailor your message accurately, reflecting your awareness of their recent activities and achievements. Always speak in second or first person, not third person. Do not mention a person's name.
 
   First Sentence: Introduce your understanding of their business without being flattering. Mention the most recent fact you have about the company to demonstrate your up-to-date research and insight.
 
-  Second Sentence: Connect a key aspect of   to something that aligns with the company's most recent initiatives or announcements. This should not feel like a sales pitch but rather an introduction to why doing business together makes sense.
+  Second Sentence: Connect a key aspect of our offer to something that aligns with the company's most recent initiatives or announcements. This should not feel like a sales pitch but rather an introduction to why doing business together makes sense.
   The offer should feel enticing yet vague, triggering a desire to want to know more.
+  here are some details about our offer:
+  {2}
 
   Ensure the tone remains professional and conversational, as if speaking to a peer in the business world. Avoid using the first-person narrative about yourself, focusing entirely on the proposal and its relevance to the recipient. Do not include a greeting, salutation, or signature, just the body of the email. 
 
-  Each paragraph should be between 40-50 words exactly and the output should only be two paragraphs. Never mention a location.
-  
-  Here's the reserach:
-  `
+  Each paragraph should be between 40-50 words exactly and the output should be only two paragraphs. Never mention a location.`
 };
 
 export { promptsText };
