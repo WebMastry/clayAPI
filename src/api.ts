@@ -39,7 +39,7 @@ prompts.get('/cold-email', (req, res) => {
 
   if (!research) {
     return res.status(400).json({
-      error: 'Bad Input: paramName is either missing or not a valid URL.'
+      error: 'Bad Input: paramName is either missing or not a valid Research.'
     });
   }
 
