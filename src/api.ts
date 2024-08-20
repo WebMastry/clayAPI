@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { promptsText } from './prompts';
-import { isValidURL } from './utils/ivValidUrl';
+import { isValidDomain } from './utils/isValidDomain';
 
 export const app = express();
 
@@ -25,7 +25,7 @@ prompts.get('/hello', (req, res) => {
 prompts.get('/cohere-journalist', (req, res) => {
   const { url } = req.body;
 
-  if (!url || !isValidURL(url)) {
+  if (!url || !isValidDomain(url)) {
     return res.status(400).json({
       error: 'Bad Input: paramName is either missing or not a valid URL.'
     });
